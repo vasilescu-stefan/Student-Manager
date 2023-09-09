@@ -1,0 +1,7 @@
+{% autoescape off %}
+Salut {{user.username}}
+
+Te rog apasa pe link-ul de mai jos pentru a iti activa contul:
+
+http://{{domain}}{% url 'activate'  uidb64=uid token=token %}
+{% endautoescape %}

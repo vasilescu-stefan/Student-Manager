@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Welcome to esims</title>    
+{% endblock title%}
+
+{% block navbar %}
+{% if user.is_authenticated %}
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'profil' %}">Profil</a>
+  </li>
+{% endif %}
+{% endblock navbar %}
+
+{% block css_files %}
+{% comment %} <link rel="stylesheet" href="{% static 'blog/index.css' %}">
+<link rel="stylesheet" href="{% static 'blog/post.css' %}"> {% endcomment %}
+{% endblock css_files %}
+
+{% block content %}
+<div class="container-fluid text-center">
+    <section id="welcome">
+        <header>
+            <h2>Welcome to my Project</h2>
+        </header>
+        <p>Esims 2.0</p>
+        <div class="d-flex justify-content-center align-items-center" style="">
+        <img src="{% static 'vizualizare/images/Learn.png' %}"  alt="Facultatea de Informatica-Iasi">
+        </div>
+    </section>
+</div>
+
+
+{% endblock content %}
+

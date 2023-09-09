@@ -1,0 +1,1 @@
+alert("Numarul matricol nu exista")

@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<link rel="stylesheet" href="{% static 'utilizatori/table_style.css' %}">
+{% endblock title %}
+
+{% block navbar %}
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'profil' %}">Profil</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'materii_an1' %}">Materii an1</a>
+  </li>
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'materii_an3' %}">Materii an3</a>
+</li>
+{% if student_an == 1 %}
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="{% url 'optional1' %}">Optional1</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="{% url 'optional2' %}">Optional2</a>
+</li>
+{% endif %}
+{% if student_an == 2 %}
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Optional3</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Optional4</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Optional5</a>
+  </li>
+{% endif %}
+{% endblock navbar %}
+
+{% block content %}
+    {% if username %}
+    <div class="container">
+      <h2 class="text-center">Tabel semestru 3</h2>
+      <table class="table table-striped table-bordered table-hover table-responsive" id="myTable">
+      <thead>
+        <tr>
+          <th scope="col">Semestru</th>
+          <th scope="col">Denumire Disciplina</th>
+          <th scope="col">Nota Finala</th>
+          <th scope="col">Credite</th>
+          <th scope="col">Data</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for note in nota  %}
+        {% for cursuri in curs  %}
+            {% if note.id_curs == cursuri.id_curs and cursuri.semestru == 3%}
+                {% if note.valoare == None and note.data_notare == None%}
+                </tr>
+                <td>{{cursuri.semestru}}</td>
+                <td>{{cursuri.titlu_curs}}</td>
+                <td> </td>
+                <td>{{cursuri.credite}}</td>
+                <td> </td>
+                </tr>
+                {% elif note.valoare == None%}
+                <tr>
+                  <td>{{cursuri.semestru}}</td>
+                  <td>{{cursuri.titlu_curs}}</td>
+                  <td> </td>
+                  <td>{{cursuri.credite}}</td>
+                  <td>{{note.data_notare}}</td>
+                </tr>
+                {% elif note.data_notare == None%}
+                <tr>
+                  <td>{{cursuri.semestru}}</td>
+                  <td>{{cursuri.titlu_curs}}</td>
+                  <td>{{note.valoare}}</td>
+                  <td>{{cursuri.credite}}</td>
+                  <td> </td>
+                </tr>
+                {% else %}
+                <tr>
+                  <td>{{cursuri.semestru}}</td>
+                  <td>{{cursuri.titlu_curs}}</td>
+                  <td>{{note.valoare}}</td>
+                  <td>{{cursuri.credite}}</td>
+                  <td>{{note.data_notare}}</td>
+                </tr>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+    <div class="container">
+      <h2 class="text-center">Tabel semestru 4</h2>
+      <table class="table table-striped table-bordered table-hover table-responsive" id="myTable">
+      <thead>
+        <tr>
+          <th scope="col">Semestru</th>
+          <th scope="col">Denumire Disciplina</th>
+          <th scope="col">Nota Finala</th>
+          <th scope="col">Credite</th>
+          <th scope="col">Data</th>
+        </tr>
+      </thead>
+      <tbody>
+    {% for note in nota  %}
+        {% for cursuri in curs  %}
+            {% if note.id_curs == cursuri.id_curs and cursuri.semestru == 4%}
+                {% if note.valoare == None and note.data_notare == None%}
+                </tr>
+                <td>{{cursuri.semestru}}</td>
+                <td>{{cursuri.titlu_curs}}</td>
+                <td> </td>
+                <td>{{cursuri.credite}}</td>
+                <td> </td>
+                </tr>
+                {% elif note.valoare == None%}
+                <tr>
+                  <td>{{cursuri.semestru}}</td>
+                  <td>{{cursuri.titlu_curs}}</td>
+                  <td> </td>
+                  <td>{{cursuri.credite}}</td>
+                  <td>{{note.data_notare}}</td>
+                </tr>
+                {% elif note.data_notare == None%}
+                <tr>
+                  <td>{{cursuri.semestru}}</td>
+                  <td>{{cursuri.titlu_curs}}</td>
+                  <td>{{note.valoare}}</td>
+                  <td>{{cursuri.credite}}</td>
+                  <td> </td>
+                </tr>
+                {% else %}
+                <tr>
+                  <td>{{cursuri.semestru}}</td>
+                  <td>{{cursuri.titlu_curs}}</td>
+                  <td>{{note.valoare}}</td>
+                  <td>{{cursuri.credite}}</td>
+                  <td>{{note.data_notare}}</td>
+                </tr>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+    {% else %}
+    <p>Please log in to view user information.</p>
+    {% endif %}
+{% endblock content %}

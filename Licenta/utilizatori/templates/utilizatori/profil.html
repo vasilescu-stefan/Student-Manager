@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<link rel="stylesheet" href="{% static 'utilizatori/table_style.css' %}">
+{% endblock title %}
+
+
+{% block navbar %}
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="{% url 'materii_an1' %}">Materii an1</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="{% url 'materii_an2' %}">Materii an2</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="{% url 'materii_an3' %}">Materii an3</a>
+</li>
+{% if student_an == 1 %}
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="{% url 'optional1' %}">Optional1</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link active" aria-current="page" href="{% url 'optional2' %}">Optional2</a>
+</li>
+{% endif %}
+{% if student_an == 2 %}
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'optional3' %}">Optional3</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'optional4' %}">Optional4</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'optional5' %}">Optional5</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'optional6' %}">Optional6</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'optional7' %}">Optional7</a>
+  </li>
+{% endif %}
+{% endblock navbar %}
+
+{% block content %}
+    {% if username %}
+    <h1>Welcome, {{ username }}!</h1>
+    <div class=container>
+      <h2 class="text-center">Informatii Personale</h2>
+    <table class="table table-striped table-bordered table-hover table-responsive">
+      <tbody>
+        <tr>
+          <th>Nume</th>
+          <th>{{ nume_student }}</th>
+        </tr>
+      </tbody>
+      <tr>
+        <th>Prenume</th>
+        <th>{{ prenume_student }}</th>
+      </tr>
+    </tbody>
+    <tr>
+      <th>Email</th>
+      <th>{{ email }}</th>
+    </tr>
+  </tbody>
+  <tr>
+    <th>Nr_matricol</th>
+    <th>{{ nr_matricol }}</th>
+  </tr>
+</tbody>
+<tr>
+  <th>An</th>
+  <th>{{ student_an }}</th>
+</tr>
+</tbody>
+<tr>
+  <th>Grupa</th>
+  <th>{{ grupa_student }}</th>
+</tr>
+</tbody>
+<tr>
+  <th>Specializare</th>
+  <th>{{ specializare_student }}</th>
+</tr>
+</tbody>
+<tr>
+  <th>Data Nasterii</th>
+  <th>{{ data_nasterii_student }}</th>
+</tr>
+</tbody>
+<tr>
+  <th>Telefon</th>
+  <th>{{ telefon_sudent }}</th>
+</tr>
+</tbody>
+<tr>
+  <th>Mama</th>
+  <th>{{ mama_student }}</th>
+</tr>
+</tbody>
+<tr>
+  <th>Tata</th>
+  <th>{{ tata_student }}</th>
+</tr>
+</tbody>
+<tr>
+  <th>Nationalitate</th>
+  <th>{{ nationalitate_student }}</th>
+</tr>
+</tbody>
+<tr>
+  <th>Cetatenia</th>
+  <th>{{ cetatenia_student }}</th>
+</tr>
+</tbody>
+    </table>
+  </div>
+  <div class=container>
+    <h2 class="text-center">Situatia in functie de semestru</h2>
+    <table class="table table-striped table-bordered table-hover table-responsive">
+      <thead>
+        <tr>
+          <th scope="col">Semestru</th>
+          <th scope="col">Media</th>
+          <th scope="col">Puncte</th>
+          <th scope="col">Credite</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if media_sem1 == 0 %}
+        <tr>
+          <td>1</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+    {% else %}
+        <tr>
+          <td>1</td>
+          <td>{{media_sem1}}</td>
+          <td>{{puncte1}}</td>
+          <td>{{credite1}}</td>
+        </tr>
+    {% endif %}
+    {% if media_sem2 == 0 %}
+        <tr>
+          <td>2</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+    {% else %}
+        <tr>
+          <td>2</td>
+          <td>{{media_sem2}}</td>
+          <td>{{puncte2}}</td>
+          <td>{{credite2}}</td>
+        </tr>
+    {% endif %}
+    {% if media_sem3 == 0 %}
+        <tr>
+          <td>3</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+    {% else %}
+        <tr>
+          <td>3</td>
+          <td>{{media_sem3}}</td>
+          <td>{{puncte3}}</td>
+          <td>{{credite3}}</td>
+        </tr>
+    {% endif %}
+    {% if media_sem4 == 0 %}
+        <tr>
+          <td>4</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+    {% else %}
+        <tr>
+          <td>4</td>
+          <td>{{media_sem4}}</td>
+          <td>{{puncte4}}</td>
+          <td>{{credite4}}</td>
+        </tr>
+    {% endif %}
+    {% if media_sem5 == 0 %}
+        <tr>
+          <td>5</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+    {% else %}
+        <tr>
+          <td>5</td>
+          <td>{{media_sem5}}</td>
+          <td>{{puncte5}}</td>
+          <td>{{credite5}}</td>
+        </tr>
+    {% endif %}
+    {% if media_sem6 == 0 %}
+        <tr>
+          <td>6</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+    {% else %}
+        <tr>
+          <td>6</td>
+          <td>{{media_sem6}}</td>
+          <td>{{puncte6}}</td>
+          <td>{{credite6}}</td>
+        </tr>
+    {% endif %}
+  </tbody>
+</table>
+</div>
+<div class=container>
+  <h2 class="text-center">Situatia in functie de an</h2>
+  <table class="table table-striped table-bordered table-hover table-responsive">
+    <thead>
+      <tr>
+        <th scope="col">An</th>
+        <th scope="col">Media</th>
+        <th scope="col">Puncte</th>
+        <th scope="col">Credite</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if media_an1 == 0 %}
+      <tr>
+        <td>1</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  {% else %}
+      <tr>
+        <td>1</td>
+        <td>{{media_an1}}</td>
+        <td>{{puncte_an1}}</td>
+        <td>{{credite_an1}}</td>
+      </tr>
+  {% endif %}
+  {% if media_an2 == 0 %}
+      <tr>
+        <td>2</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  {% else %}
+      <tr>
+        <td>2</td>
+        <td>{{media_an2}}</td>
+        <td>{{puncte_an2}}</td>
+        <td>{{credite_an2}}</td>
+      </tr>
+  {% endif %}
+  {% if media_an3 == 0 %}
+      <tr>
+        <td>3</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  {% else %}
+      <tr>
+        <td>3</td>
+        <td>{{media_an3}}</td>
+        <td>{{puncte_an3}}</td>
+        <td>{{credite_an3}}</td>
+      </tr>
+  {% endif %}
+</tbody>
+</table>
+</div>
+    {% comment %} <p>Sem1 media:{{media_sem1}} puncte:{{puncte}}</p>  {% endcomment %}
+    {% else %}
+    <p>Please log in to view user information.</p>
+    {% endif %}
+{% endblock content %}

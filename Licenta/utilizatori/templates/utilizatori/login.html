@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" type="text/css" href="{% static 'utilizatori/table_style.css' %}">
+{% endblock style %}
+
+{% block title %}
+<title>Login</title>
+{% endblock title %}
+
+{% block content %}
+<div class="container-fluid" >
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card" >
+                <div class="card-body">
+                    <h1 class="card-title text-center" style="font-size: 24px; font-weight: bold; margin-bottom: 20px;">Login</h1>
+                    <form method="POST">
+                    <div class="form-group"> 
+                        {% csrf_token %}
+                        {{form.as_p}}
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    </form>
+                    <div class="text-center mt-3">
+                        <small class="text-muted">
+                            <a href="{% url 'password_reset' %}">Forgot Password?</a>
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% comment %} <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <small class="text-muted">
+        <a href="{% url 'password_reset' %}">Forgot Password?</a>
+    </small> {% endcomment %}
+{% endblock content %}
+

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row justify-content-center d-flex">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'confirm_subject_relation' %}" method="POST">
+                    <div class="form-group"> 
+                            {% csrf_token %}
+                            <h2>Is the new subject "{{ new_name }}" related to the previous subject "{{ old_name }}"?</h2>
+                            <label for=""></label>
+                            <input type="hidden" name="new_name" value="{{ new_name }}">
+                            <div class="col-auto">
+                            <input type="submit" class="btn btn-primary text-center" value="Yes, it is related" name="Yes"/>
+                            <input type="submit" class="btn btn-primary text-center" value="No, it is not related" name="No"/>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+{% endblock %}
